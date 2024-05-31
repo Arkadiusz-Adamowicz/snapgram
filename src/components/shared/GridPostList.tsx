@@ -9,8 +9,12 @@ type GridPostListProps = {
   showStats?: boolean;
 };
 
-const GridPostList = ({ posts }: GridPostListProps) => {
-  const { user, showUser = true, showStats = true } = useUserContext();
+const GridPostList = ({
+  posts,
+  showUser = true,
+  showStats = true,
+}: GridPostListProps) => {
+  const { user } = useUserContext();
 
   return (
     <ul className='grid-container'>
