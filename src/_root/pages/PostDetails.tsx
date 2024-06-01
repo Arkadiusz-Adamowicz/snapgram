@@ -62,7 +62,6 @@ const PostDetails = () => {
                     <p className='subtle-semibold lg:small-regular'>
                       {formatDateString(post?.$createdAt || '')}
                     </p>
-                    -
                     <p className='subtle-semibold lg:small-regular'>
                       {post?.location}
                     </p>
@@ -77,8 +76,8 @@ const PostDetails = () => {
                   <img
                     src='/assets/icons/edit.svg'
                     alt='edit'
-                    width={18}
-                    height={18}
+                    width={20}
+                    height={20}
                   />
                 </Link>
                 <Button
@@ -91,8 +90,8 @@ const PostDetails = () => {
                   <img
                     src='/assets/icons/delete.svg'
                     alt='delete'
-                    width={18}
-                    height={18}
+                    width={22}
+                    height={22}
                   />
                 </Button>
               </div>
