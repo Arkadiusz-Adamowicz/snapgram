@@ -138,7 +138,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
                 <Input
                   type='text'
                   className='shad-input'
-                  placeholder='JS, React, NextJS'
+                  placeholder=''
                   {...field}
                 />
               </FormControl>
