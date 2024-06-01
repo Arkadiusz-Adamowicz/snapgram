@@ -108,12 +108,10 @@ export async function signOutAccount() {
 
 export async function createPost(post: INewPost) {
   try {
-    // Upload file to appwrite storage
     const uploadedFile = await uploadFile(post.file[0]);
 
     if (!uploadedFile) throw Error;
 
-    // Get file url
     const fileUrl = getFilePreview(uploadedFile.$id);
     console.log(fileUrl);
 
@@ -122,10 +120,8 @@ export async function createPost(post: INewPost) {
       throw Error;
     }
 
-    // Convert tags into array
     const tags = post.tags?.replace(/ /g, '').split(',') || [];
 
-    // Create post
     const newPost = await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.postsCollectionId,
