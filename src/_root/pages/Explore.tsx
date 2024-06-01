@@ -11,8 +11,8 @@ import GridPostList from '@/components/shared/GridPostList';
 import Loader from '@/components/shared/Loader';
 
 export type SearchResultProps = {
-  isSearchFetching: boolean;
-  searchedPosts: any;
+  isSearchFetching?: boolean;
+  searchedPosts?: any;
 };
 
 const SearchResults = ({
@@ -53,7 +53,10 @@ const Explore = () => {
     );
 
   const shouldShowSearchResults = searchValue !== '';
-  const shouldShowPosts = posts.pages.some(item => item.documents.length > 0);
+
+  const shouldShowPosts = posts.pages.some(
+    item => item?.documents.length === 0
+  );
 
   return (
     <div className='explore-container'>
@@ -101,7 +104,7 @@ const Explore = () => {
           />
         ) : shouldShowPosts ? (
           posts.pages.map((item, index) => (
-            <GridPostList key={`page-${index}`} posts={item.documents} />
+            <GridPostList key={`page-${index}`} posts={item?.documents} />
           ))
         ) : (
           <p className='text-light-4 mt-10 text-center w-full'>End of posts</p>
