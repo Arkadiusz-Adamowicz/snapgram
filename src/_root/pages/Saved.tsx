@@ -1,8 +1,21 @@
 import GridPostList from '@/components/shared/GridPostList';
-import { useGetPosts } from '@/lib/react-query/queriesAndMutations';
+import Loader from '@/components/shared/Loader';
+import { useGetCurrentUser } from '@/lib/react-query/queriesAndMutations';
+import { Models } from 'appwrite';
 
 const Saved = () => {
-  const { data: posts } = useGetPosts();
+  const { data: currentUser } = useGetCurrentUser();
+  console.log(currentUser);
+
+  const savePosts = currentUser?.save
+    .map((savePost: Models.Document) => ({
+      ...savePost.post,
+      creator: {
+        imageUrl: currentUser.imageUrl,
+      },
+    }))
+    .reverse();
+
   return (
     <div className='flex flex-1'>
       <div className='common-container'>
@@ -13,12 +26,20 @@ const Saved = () => {
               alt='saved'
               className='invert-white mr-2 md:h-8 md:w-8 h-6 w-6'
             />
-            Saved
+            Saved Posts
           </h2>
           <div className='flex flex-wrap gap-9 w-full max-w-5xl'>
-            {posts?.pages.map((item, index) => (
-              <GridPostList key={`page-${index}`} posts={item?.documents} />
-            ))}
+            {!currentUser ? (
+              <Loader />
+            ) : (
+              <ul className='w-full flex justify-center max-w-5xl gap-9'>
+                {savePosts.length === 0 ? (
+                  <p className='text-light-4'>No available posts</p>
+                ) : (
+                  <GridPostList posts={savePosts} showStats={false} />
+                )}
+              </ul>
+            )}
           </div>
         </div>
       </div>
