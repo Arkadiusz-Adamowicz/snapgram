@@ -23,6 +23,7 @@ import {
   getInfinitePosts,
   searchPosts,
   getSavedPosts,
+  getUsers,
 } from '@/lib/appwrite/api';
 import { INewPost, INewUser, IUpdatePost } from '@/types';
 
@@ -197,5 +198,12 @@ export const useGetSavedPosts = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_RECENT_POSTS],
     queryFn: getSavedPosts,
+  });
+};
+
+export const useGetUsers = (limit?: number) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_USERS],
+    queryFn: () => getUsers(limit),
   });
 };
