@@ -27,7 +27,14 @@ const PostDetails = () => {
   return (
     <div className='post_details-container'>
       <div className='max-w-5xl flex-start gap-3 justify-start w-full'>
-        <h2 className='h3-bold md:h2-bold text-left w-full'>Post Details</h2>
+        <h2 className='h3-bold md:h2-bold w-full flex items-center'>
+          <img
+            src='/assets/icons/posts.svg'
+            alt='post_detail'
+            className='invert-white mr-2 md:h-8 md:w-8 h-6 w-6'
+          />
+          Post Details
+        </h2>
       </div>
       {isPending ? (
         <Loader />

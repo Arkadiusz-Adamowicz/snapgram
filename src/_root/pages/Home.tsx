@@ -10,7 +10,14 @@ const Home = () => {
     <div className='flex flex-1'>
       <div className='home-container'>
         <div className='home-posts'>
-          <h2 className='h3-bold md:h2-bold text-left w-full'>Home Feeds</h2>
+          <h2 className='h3-bold md:h2-bold w-full flex items-center'>
+            <img
+              src='/assets/icons/home.svg'
+              alt='home'
+              className='invert-white mr-2 md:h-8 md:w-8 h-6 w-6'
+            />
+            Home Feeds
+          </h2>
           {isPostLoading && !posts ? (
             <Loader />
           ) : (
