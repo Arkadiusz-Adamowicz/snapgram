@@ -5,6 +5,7 @@ import { toast } from '@/components/ui/use-toast';
 import { useUserContext } from '@/context/AuthContext';
 import {
   useDeletePost,
+  useDeleteSavedPost,
   useGetPostById,
 } from '@/lib/react-query/queriesAndMutations';
 import { formatDateString } from '@/lib/utils';
@@ -17,9 +18,12 @@ const PostDetails = () => {
   const { data: post, isPending } = useGetPostById(id || '');
   const { user } = useUserContext();
   const { mutate: deletePost } = useDeletePost();
+  const { mutate: deleteSavedPost } = useDeleteSavedPost();
 
   const handleDeletePost = () => {
     deletePost({ postId: id || '', imageId: post?.imageId });
+    deleteSavedPost({ postId: id || '' });
+
     toast({ title: 'Post successfully deleted' });
     navigate(-1);
   };
