@@ -15,6 +15,10 @@
 }
 
 @layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   /* TYPOGRAPHY */
   .h1-bold {
     @apply text-[36px] font-bold leading-[140%] tracking-tighter;
@@ -136,7 +140,7 @@
 
   /* Home */
   .home-container {
-    @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-5 sm:py-10 px-5 md:px-8 custom-scrollbar;
+    @apply flex flex-col flex-1 items-center gap-10 overflow-auto py-5 sm:py-10 px-5 md:px-8 custom-scrollbar;
   }
 
   .home-posts {
