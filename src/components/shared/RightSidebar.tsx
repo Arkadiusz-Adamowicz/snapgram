@@ -17,7 +17,7 @@ const RightSidebar = () => {
         {isLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className='grid grid-cols-2 gap-6'>
+          <ul className='flex flex-wrap gap-6'>
             {creators?.documents.map(creator => (
               <li key={creator?.$id} className='min-w-[180px] w-full roun'>
                 <UserCard user={creator} />
