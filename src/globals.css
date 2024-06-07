@@ -6,7 +6,7 @@
 
 @layer base {
   * {
-    @apply box-border list-none p-0 m-0 scroll-smooth;
+    @apply box-border list-none p-0 m-0 scroll-smooth no-scrollbar;
   }
 
   body {
@@ -140,7 +140,7 @@
 
   /* Home */
   .home-container {
-    @apply flex flex-col flex-1 items-center gap-10 overflow-auto py-5 sm:py-10 px-5 md:px-8 custom-scrollbar;
+    @apply flex flex-col flex-1 items-center gap-10  py-5 sm:py-10 px-5 md:px-8 custom-scrollbar;
   }
 
   .home-posts {

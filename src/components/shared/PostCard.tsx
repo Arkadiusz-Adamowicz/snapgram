@@ -27,7 +27,7 @@ const PostCard = ({ post }: PostCardProps) => {
               className='rounded-full w-11 lg:h-11'
             />
           </Link>
-          <div className='flex flex-col '>
+          <div className='flex flex-col'>
             <p className='base-medium lg:body-bold text-light-1'>
               {post?.creator.name}
             </p>
