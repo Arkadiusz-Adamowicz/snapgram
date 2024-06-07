@@ -23,8 +23,6 @@ const PostDetails = () => {
     deletePost({ postId: id || '', imageId: post?.imageId });
     deleteSavedPost({
       savedPostId: id || '',
-      user: post?.user,
-      post: post?.post,
     });
     navigate(-1);
   };

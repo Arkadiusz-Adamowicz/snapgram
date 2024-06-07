@@ -312,12 +312,8 @@ export async function deletePost(postId: string, imageId: string) {
   }
 }
 
-export async function deleteSavedPost(
-  savedPostId: string,
-  user: string,
-  post: string
-) {
-  if (!savedPostId || user || post) throw Error;
+export async function deleteSavedPost(savedPostId: string) {
+  if (!savedPostId || '') throw Error;
 
   try {
     await databases.deleteDocument(
