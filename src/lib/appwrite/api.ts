@@ -237,21 +237,6 @@ export async function savePost(postId: string, userId: string) {
   }
 }
 
-export async function deleteSavedPost(postId: string) {
-  try {
-    const statusCode = await databases.deleteDocument(
-      appwriteConfig.databaseId,
-      appwriteConfig.savesCollectionId,
-      postId
-    );
-
-    if (!statusCode) throw Error;
-    return { status: 'ok' };
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export async function getPostById(postId: string) {
   try {
     const post = await databases.getDocument(
@@ -324,6 +309,26 @@ export async function deletePost(postId: string, imageId: string) {
     return { status: 'ok' };
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function deleteSavedPost(
+  savedPostId: string,
+  user: string,
+  post: string
+) {
+  if (!savedPostId || user || post) throw Error;
+
+  try {
+    await databases.deleteDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.savesCollectionId,
+      savedPostId
+    );
+    return { status: 'ok' };
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 }
 

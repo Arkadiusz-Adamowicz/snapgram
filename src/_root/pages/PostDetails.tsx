@@ -1,7 +1,6 @@
 import Loader from '@/components/shared/Loader';
 import PostStats from '@/components/shared/PostStats';
 import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
 import { useUserContext } from '@/context/AuthContext';
 import {
   useDeletePost,
@@ -22,9 +21,11 @@ const PostDetails = () => {
 
   const handleDeletePost = () => {
     deletePost({ postId: id || '', imageId: post?.imageId });
-    deleteSavedPost({ postId: id || '' });
-
-    toast({ title: 'Post successfully deleted' });
+    deleteSavedPost({
+      savedPostId: id || '',
+      user: post?.user,
+      post: post?.post,
+    });
     navigate(-1);
   };
 
