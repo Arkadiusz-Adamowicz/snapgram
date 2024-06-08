@@ -312,19 +312,19 @@ export async function deletePost(postId: string, imageId: string) {
   }
 }
 
-export async function deleteSavedPost(savedPostId: string) {
-  if (!savedPostId || '') throw Error;
-
+export async function deleteSavedPost(savedRecordId: string) {
   try {
-    await databases.deleteDocument(
+    const statusCode = await databases.deleteDocument(
       appwriteConfig.databaseId,
       appwriteConfig.savesCollectionId,
-      savedPostId
+      savedRecordId
     );
-    return { status: 'ok' };
+
+    if (!statusCode) throw Error;
+
+    return { status: 'Ok' };
   } catch (error) {
     console.log(error);
-    throw error;
   }
 }
 
