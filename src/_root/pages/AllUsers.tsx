@@ -24,9 +24,9 @@ const AllUsers = () => {
         {isLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className='user-grid'>
+          <ul className='flex flex-wrap gap-5'>
             {creators?.documents.map(creator => (
-              <li key={creator?.$id} className='flex-1 min-w-[200px] w-full  '>
+              <li key={creator?.$id} className='flex-1 min-w-[200px] w-full '>
                 <UserCard user={creator} />
               </li>
             ))}

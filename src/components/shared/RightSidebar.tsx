@@ -11,15 +11,15 @@ const RightSidebar = () => {
     toast({ title: 'Something went wrong' });
   }
   return (
-    <div className='leftsidebar'>
+    <div className='rightsidebar'>
       <div className='flex flex-col gap-8'>
         <h3 className='body-bold md:h3-bold items-center'>Top Creators</h3>
         {isLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className='flex flex-wrap gap-6'>
+          <ul className='grid grid-cols-2 gap-5'>
             {creators?.documents.map(creator => (
-              <li key={creator?.$id} className='min-w-[180px] w-full roun'>
+              <li key={creator?.$id}>
                 <UserCard user={creator} />
               </li>
             ))}
