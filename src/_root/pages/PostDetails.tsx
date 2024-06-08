@@ -21,9 +21,7 @@ const PostDetails = () => {
 
   const handleDeletePost = () => {
     deletePost({ postId: id || '', imageId: post?.imageId });
-    deleteSavedPost({
-      savedPostId: id || '',
-    });
+    deleteSavedPost(id ?? '');
     navigate(-1);
   };
 
