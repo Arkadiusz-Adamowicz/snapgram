@@ -63,15 +63,15 @@ const PostDetails = () => {
                     className='rounded-full w-8 h-8 lg:w-11 lg:h-11'
                   />
 
-                  <div className='flex flex-col '>
+                  <div className='flex flex-col'>
                     <p className='base-medium lg:body-bold text-light-1'>
                       {post?.creator.name}
                     </p>
-                    <div className='flex-left text-light-3 flex flex-col pr-2'>
+                    <div className='flex-left text-light-3 flex flex-col sm:flex-row pr-2 self-left'>
                       <p className='subtle-semibold lg:small-regular'>
-                        {formatDateString(post?.$createdAt || '')}
+                        {formatDateString(post?.$createdAt || '')},
                       </p>
-                      <p className='subtle-semibold lg:small-regular'>
+                      <p className='subtle-semibold lg:small-regular sm:ml-1 '>
                         {post?.location}
                       </p>
                     </div>
