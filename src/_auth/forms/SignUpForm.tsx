@@ -35,12 +35,12 @@ const SignupForm = () => {
       password: '',
     },
   });
-
-  // Queries
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
     useCreateUserAccount();
   const { mutateAsync: signInAccount, isPending: isSigningInUser } =
     useSignInAccount();
+
+  // Queries
 
   // Handler
   const handleSignup = async (user: z.infer<typeof SignupValidation>) => {
