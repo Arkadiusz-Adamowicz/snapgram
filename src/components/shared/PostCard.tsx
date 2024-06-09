@@ -31,12 +31,11 @@ const PostCard = ({ post }: PostCardProps) => {
             <p className='base-medium lg:body-bold text-light-1'>
               {post?.creator.name}
             </p>
-            <div className='flex-center gap-2 text-light-3'>
+            <div className='flex-left text-light-3 flex flex-col sm:flex-row pr-2 self-left'>
               <p className='subtle-semibold lg:small-regular'>
-                {formatDateString(post?.$createdAt)}
+                {formatDateString(post?.$createdAt || '')},
               </p>
-              -
-              <p className='subtle-semibold lg:small-regular'>
+              <p className='subtle-semibold lg:small-regular sm:ml-1 '>
                 {post?.location}
               </p>
             </div>
