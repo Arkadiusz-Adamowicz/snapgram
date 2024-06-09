@@ -19,7 +19,7 @@ const Saved = () => {
   return (
     <div className='flex flex-1'>
       <div className='common-container'>
-        <div className='max-w-5xl flex-col gap-3 justify-start w-full'>
+        <div className='flex-col gap-3 justify-start w-full'>
           <h2 className='h3-bold md:h2-bold w-full flex items-center mb-5'>
             <img
               src='/assets/icons/bookmark.svg'
@@ -28,11 +28,11 @@ const Saved = () => {
             />
             Saved Posts
           </h2>
-          <div className='flex flex-wrap gap-9 w-full max-w-5xl'>
+          <div className='flex flex-wrap gap-9 w-full'>
             {!currentUser ? (
               <Loader />
             ) : (
-              <ul className='w-full flex justify-center max-w-5xl gap-9'>
+              <ul className='w-full flex justify-centergap-9'>
                 {savePosts.length === 0 ? (
                   <p className='text-light-4'>No saved posts</p>
                 ) : (

@@ -7,8 +7,8 @@ const Home = () => {
   const { data: posts, isPending: isPostLoading } = useGetRecentPosts();
 
   return (
-    <div className='common-container'>
-      <div className='user-container w-full md:flex'>
+    <div className='flex flex-1'>
+      <div className='common-container'>
         <div className='home-posts'>
           <h2 className='h3-bold md:h2-bold w-full flex items-center'>
             <img

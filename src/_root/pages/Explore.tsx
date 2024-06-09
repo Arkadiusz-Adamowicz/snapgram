@@ -89,7 +89,7 @@ const Explore = () => {
         </div>
       </div>
 
-      <div className='flex-between w-full max-w-5xl my-5'>
+      <div className='flex-between w-full my-5'>
         <h3 className='body-bold md:h3-bold'>Popular Today</h3>
         <div className='flex-center gap-3 bg-dark-3 rounded-xl px-4 py-2 cursor-pointer'>
           <p className='small-medium md:base-medium text-light-2'>All</p>
@@ -102,7 +102,7 @@ const Explore = () => {
         </div>
       </div>
 
-      <div className='flex flex-wrap gap-9 w-full max-w-5xl'>
+      <div className='flex flex-wrap gap-9 w-full'>
         {shouldShowSearchResults ? (
           <SearchResults
             isSearchFetching={isSearchFetching}

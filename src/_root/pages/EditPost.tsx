@@ -11,7 +11,7 @@ const EditPost = () => {
   return (
     <div className='flex flex-1'>
       <div className='common-container'>
-        <div className='max-w-5xl flex-start justify-start w-full'>
+        <div className='flex-start justify-start w-full'>
           <img
             src='/assets/icons/edit.svg'
             alt='edit'
