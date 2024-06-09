@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div className='common-container'>
-      <div className='user-container'>
+      <div className='user-container w-full md:flex'>
         <div className='home-posts'>
           <h2 className='h3-bold md:h2-bold w-full flex items-center'>
             <img
