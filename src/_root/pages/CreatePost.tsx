@@ -42,14 +42,10 @@ const CreatePost = () => {
                 <p className='text-[18px] text-light-3'>@{user.username}</p>
               </div>
             </Link>
-            <h3 className='text-xl h3-bold items-center'>Top posts by you</h3>
+            <h3 className='text-xl h3-bold items-center'>Top Posts</h3>
           </div>
           <div className='mt-5 w-[400px]'>
-            {currentUser?.posts ? (
-              <TopPostList posts={currentUser.posts} />
-            ) : (
-              <p>No posts available</p>
-            )}
+            <TopPostList posts={currentUser?.posts} />
           </div>
         </div>
       </div>

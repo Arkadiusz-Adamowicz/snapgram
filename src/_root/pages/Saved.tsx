@@ -33,11 +33,7 @@ const Saved = () => {
               <Loader />
             ) : (
               <ul className='w-full flex justify-centergap-9'>
-                {savePosts.length === 0 ? (
-                  <p className='text-light-4'>No saved posts</p>
-                ) : (
-                  <GridPostList posts={savePosts} showStats={false} />
-                )}
+                <GridPostList posts={savePosts} showStats={false} />
               </ul>
             )}
           </div>
