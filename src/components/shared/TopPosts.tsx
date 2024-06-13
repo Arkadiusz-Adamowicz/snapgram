@@ -8,6 +8,7 @@ const TopPosts = () => {
   const { id } = useParams();
   const { user } = useUserContext();
   const { data: currentUser } = useGetUserById(id || '');
+  console.log(user);
 
   if (!currentUser)
     return (
