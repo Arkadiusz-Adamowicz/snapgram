@@ -8,7 +8,7 @@ const CreatePost = () => {
   const { id } = useParams();
   const { user } = useUserContext();
   const { data: currentUser } = useGetUserById(id || '');
-  console.log(currentUser);
+
   return (
     <div className='flex flex-1'>
       <div className='common-container'>
@@ -41,11 +41,9 @@ const CreatePost = () => {
                 <p className='text-[18px] text-light-3'>@{user.username}</p>
               </div>
             </Link>
-            <h3 className='text-xl font-semibold items-center'>
-              Top posts by you
-            </h3>
+            <h3 className='text-xl h3-bold items-center'>Top posts by you</h3>
           </div>
-          <div className='mt-5 w-[400px] h-screen'>
+          <div className='mt-5 w-[400px]'>
             {currentUser?.posts ? (
               <TopPostList posts={currentUser.posts} />
             ) : (

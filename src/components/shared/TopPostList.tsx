@@ -4,7 +4,6 @@ import { Models } from 'appwrite';
 type GridPostListProps = {
   posts: Models.Document[];
 };
-
 const TopPostList = ({ posts }: GridPostListProps) => {
   return (
     <ul className='flex flex-wrap gap-6'>

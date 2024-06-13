@@ -32,6 +32,7 @@ export type IUpdatePost = {
 };
 
 export type IUser = {
+  posts: Document[];
   id: string;
   name: string;
   username: string;

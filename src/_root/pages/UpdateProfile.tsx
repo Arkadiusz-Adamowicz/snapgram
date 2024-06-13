@@ -41,6 +41,7 @@ const UpdateProfile = () => {
       bio: user.bio || '',
     },
   });
+  console.log(id);
 
   // Queries
   const { data: currentUser } = useGetUserById(id || '');
