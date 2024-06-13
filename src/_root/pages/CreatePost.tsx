@@ -2,12 +2,13 @@ import PostForm from '@/components/PostForm';
 import TopPostList from '@/components/shared/TopPostList';
 import { useUserContext } from '@/context/AuthContext';
 import { useGetUserById } from '@/lib/react-query/queriesAndMutations';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CreatePost = () => {
-  const { id } = useParams();
   const { user } = useUserContext();
-  const { data: currentUser } = useGetUserById(id || '');
+  const { data: currentUser } = useGetUserById(user.id || '');
+  console.log(currentUser);
+  console.log(user);
 
   return (
     <div className='flex flex-1'>

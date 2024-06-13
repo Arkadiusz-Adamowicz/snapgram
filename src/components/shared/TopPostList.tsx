@@ -7,7 +7,7 @@ type GridPostListProps = {
 const TopPostList = ({ posts }: GridPostListProps) => {
   return (
     <ul className='flex flex-wrap gap-6'>
-      {posts?.map(post => (
+      {posts?.slice(0, 3).map(post => (
         <li key={post.$id} className='relative min-w-50 h-50'>
           <Link to={`/posts/${post.$id}`} className='grid-post_link'>
             <img

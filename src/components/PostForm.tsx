@@ -72,7 +72,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
         title: 'Please try again',
       });
     }
-    navigate('/');
+    navigate(-1);
   }
 
   return (
