@@ -24,6 +24,7 @@ import {
   useUpdateUser,
 } from '@/lib/react-query/queriesAndMutations';
 import ProfileUploader from '@/components/shared/ProfileUploader';
+import TopPosts from '@/components/shared/TopPosts';
 
 const UpdateProfile = () => {
   const { toast } = useToast();
@@ -202,6 +203,9 @@ const UpdateProfile = () => {
             </div>
           </form>
         </Form>
+      </div>
+      <div>
+        <TopPosts />
       </div>
     </div>
   );
