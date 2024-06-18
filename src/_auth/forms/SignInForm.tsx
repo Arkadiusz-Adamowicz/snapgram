@@ -1,7 +1,7 @@
-import * as z from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Link, useNavigate } from 'react-router-dom';
+import * as z from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Link, useNavigate } from 'react-router-dom'
 
 import {
   Form,
@@ -9,66 +9,66 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import Loader from '@/components/shared/Loader';
-import { useToast } from '@/components/ui/use-toast';
+  FormMessage
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import Loader from '@/components/shared/Loader'
+import { useToast } from '@/components/ui/use-toast'
 
-import { SigninValidation } from '@/lib/validation';
-import { useSignInAccount } from '@/lib/react-query/queriesAndMutations';
-import { useUserContext } from '@/context/AuthContext';
+import { SigninValidation } from '@/lib/validation'
+import { useSignInAccount } from '@/lib/react-query/queriesAndMutations'
+import { useUserContext } from '@/context/AuthContext'
 
 const SigninForm = () => {
-  const { toast } = useToast();
-  const navigate = useNavigate();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { toast } = useToast()
+  const navigate = useNavigate()
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext()
 
   // Query
-  const { mutateAsync: signInAccount, isPending } = useSignInAccount();
+  const { mutateAsync: signInAccount, isPending } = useSignInAccount()
 
   const form = useForm<z.infer<typeof SigninValidation>>({
     resolver: zodResolver(SigninValidation),
     defaultValues: {
       email: '',
-      password: '',
-    },
-  });
+      password: ''
+    }
+  })
 
   const handleSignin = async (user: z.infer<typeof SigninValidation>) => {
-    const session = await signInAccount(user);
+    const session = await signInAccount(user)
 
     if (!session) {
-      toast({ title: 'Sign in failed. Please try again.' });
+      toast({ title: 'Sign in failed. Please try again.' })
 
-      return;
+      return
     }
 
-    const isLoggedIn = await checkAuthUser();
+    const isLoggedIn = await checkAuthUser()
 
     if (isLoggedIn) {
-      form.reset();
-      navigate('/');
+      form.reset()
+      navigate('/')
     } else {
-      toast({ title: 'Login failed. Please try again.' });
+      toast({ title: 'Login failed. Please try again.' })
 
-      return;
+      return
     }
-  };
+  }
 
   return (
     <Form {...form}>
-      <div className='sm:w-420 flex-center flex-col'>
+      <div className='flex-center flex-col sm:w-420'>
         <img src='/assets/images/logo.svg' alt='logo' />
 
-        <h2 className='h3-bold md:h2-bold pt-8 '>Sign in to your account</h2>
-        <p className='text-light-3 small-medium md:base-regular mt-2'>
+        <h2 className='h3-bold md:h2-bold pt-8'>Sign in to your account</h2>
+        <p className='small-medium md:base-regular mt-2 text-light-3'>
           Welcome back! Please enter your details.
         </p>
         <form
           onSubmit={form.handleSubmit(handleSignin)}
-          className='flex flex-col gap-5 w-full mt-4'
+          className='mt-4 flex w-full flex-col gap-5'
         >
           <FormField
             control={form.control}
@@ -108,11 +108,11 @@ const SigninForm = () => {
             )}
           </Button>
 
-          <p className='text-small-regular text-light-2 text-center mt-2'>
+          <p className='text-small-regular mt-2 text-center text-light-2'>
             Don&apos;t have an account?
             <Link
               to='/sign-up'
-              className='text-primary-500 text-small-semibold ml-1'
+              className='text-small-semibold ml-1 text-primary-500'
             >
               Sign up
             </Link>
@@ -120,7 +120,7 @@ const SigninForm = () => {
         </form>
       </div>
     </Form>
-  );
-};
+  )
+}
 
-export default SigninForm;
+export default SigninForm

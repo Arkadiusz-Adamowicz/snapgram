@@ -1,14 +1,14 @@
-import Loader from '@/components/shared/Loader';
-import UserCard from '@/components/shared/UserCard';
-import { useToast } from '@/components/ui/use-toast';
-import { useGetUsers } from '@/lib/react-query/queriesAndMutations';
+import Loader from '@/components/shared/Loader'
+import UserCard from '@/components/shared/UserCard'
+import { useToast } from '@/components/ui/use-toast'
+import { useGetUsers } from '@/lib/react-query/queriesAndMutations'
 
 const RightSidebar = () => {
-  const { toast } = useToast();
-  const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers();
+  const { toast } = useToast()
+  const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers()
 
   if (isErrorCreators) {
-    toast({ title: 'Something went wrong' });
+    toast({ title: 'Something went wrong' })
   }
   return (
     <div className='rightsidebar'>
@@ -27,7 +27,7 @@ const RightSidebar = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RightSidebar;
+export default RightSidebar

@@ -1,39 +1,39 @@
-import Loader from '@/components/shared/Loader';
-import PostStats from '@/components/shared/PostStats';
-import { Button } from '@/components/ui/button';
-import { useUserContext } from '@/context/AuthContext';
+import Loader from '@/components/shared/Loader'
+import PostStats from '@/components/shared/PostStats'
+import { Button } from '@/components/ui/button'
+import { useUserContext } from '@/context/AuthContext'
 import {
   useDeletePost,
   useDeleteSavedPost,
-  useGetPostById,
-} from '@/lib/react-query/queriesAndMutations';
-import { formatDateString } from '@/lib/utils';
-import { Link, useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+  useGetPostById
+} from '@/lib/react-query/queriesAndMutations'
+import { formatDateString } from '@/lib/utils'
+import { Link, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const PostDetails = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const { data: post, isPending } = useGetPostById(id || '');
-  const { user } = useUserContext();
-  const { mutate: deletePost } = useDeletePost();
-  const { mutate: deleteSavedPost } = useDeleteSavedPost();
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const { data: post, isPending } = useGetPostById(id || '')
+  const { user } = useUserContext()
+  const { mutate: deletePost } = useDeletePost()
+  const { mutate: deleteSavedPost } = useDeleteSavedPost()
 
   const handleDeletePost = () => {
-    deletePost({ postId: id || '', imageId: post?.imageId });
-    deleteSavedPost(id ?? '');
-    navigate(-1);
-  };
+    deletePost({ postId: id || '', imageId: post?.imageId })
+    deleteSavedPost(id ?? '')
+    navigate(-1)
+  }
 
   return (
     <div className='flex flex-1'>
       <div className='common-container'>
-        <div className='flex-col gap-3 justify-start w-full'>
-          <h2 className='h3-bold md:h2-bold w-full flex items-center'>
+        <div className='w-full flex-col justify-start gap-3'>
+          <h2 className='h3-bold md:h2-bold flex w-full items-center'>
             <img
               src='/assets/icons/posts.svg'
               alt='post_detail'
-              className='invert-white mr-2 md:h-8 md:w-8 h-6 w-6'
+              className='invert-white mr-2 h-6 w-6 md:h-8 md:w-8'
             />
             Post Details
           </h2>
@@ -60,18 +60,18 @@ const PostDetails = () => {
                       '/assets/icons/profile-placeholder.svg'
                     }
                     alt='creator'
-                    className='rounded-full w-8 h-8 lg:w-11 lg:h-11'
+                    className='h-8 w-8 rounded-full lg:h-11 lg:w-11'
                   />
 
                   <div className='flex flex-col'>
                     <p className='base-medium lg:body-bold text-light-1'>
                       {post?.creator.name}
                     </p>
-                    <div className='flex-left text-light-3 flex flex-col sm:flex-row pr-2 self-left'>
+                    <div className='flex-left self-left flex flex-col pr-2 text-light-3 sm:flex-row'>
                       <p className='subtle-semibold lg:small-regular'>
                         {formatDateString(post?.$createdAt || '')},
                       </p>
-                      <p className='subtle-semibold lg:small-regular sm:ml-1 '>
+                      <p className='subtle-semibold lg:small-regular sm:ml-1'>
                         {post?.location}
                       </p>
                     </div>
@@ -105,11 +105,11 @@ const PostDetails = () => {
                   </Button>
                 </div>
               </div>
-              <hr className='border w-full border-dark-4/80' />
+              <hr className='w-full border border-dark-4/80' />
 
-              <div className='flex flex-col flex-1 w-full small-medium lg:base-regular'>
+              <div className='small-medium lg:base-regular flex w-full flex-1 flex-col'>
                 <p>{post?.caption}</p>
-                <ul className='flex gap-1 mt-2'>
+                <ul className='mt-2 flex gap-1'>
                   {post?.tags.map((tag: string) => (
                     <li key={tag} className='text-light-3'>
                       #{tag}
@@ -126,7 +126,7 @@ const PostDetails = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostDetails;
+export default PostDetails

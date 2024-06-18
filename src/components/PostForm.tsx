@@ -1,42 +1,42 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from './ui/textarea';
-import FormUploader from './shared/FormUploader';
-import { PostValidation } from '@/lib/validation';
-import { Models } from 'appwrite';
+  FormMessage
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from './ui/textarea'
+import FormUploader from './shared/FormUploader'
+import { PostValidation } from '@/lib/validation'
+import { Models } from 'appwrite'
 import {
   useCreatePost,
-  useUpdatePost,
-} from '@/lib/react-query/queriesAndMutations';
-import { useUserContext } from '@/context/AuthContext';
-import { useToast } from './ui/use-toast';
-import { useNavigate } from 'react-router-dom';
+  useUpdatePost
+} from '@/lib/react-query/queriesAndMutations'
+import { useUserContext } from '@/context/AuthContext'
+import { useToast } from './ui/use-toast'
+import { useNavigate } from 'react-router-dom'
 
 type PostFormProps = {
-  post?: Models.Document;
-  action: 'Create' | 'Update';
-};
+  post?: Models.Document
+  action: 'Create' | 'Update'
+}
 
 const PostForm = ({ post, action }: PostFormProps) => {
   const { mutateAsync: createPost, isPending: isLoadingCreate } =
-    useCreatePost();
+    useCreatePost()
   const { mutateAsync: updatePost, isPending: isLoadingUpdate } =
-    useUpdatePost();
+    useUpdatePost()
 
-  const { user } = useUserContext();
-  const { toast } = useToast();
-  const navigate = useNavigate();
+  const { user } = useUserContext()
+  const { toast } = useToast()
+  const navigate = useNavigate()
 
   const form = useForm<z.infer<typeof PostValidation>>({
     resolver: zodResolver(PostValidation),
@@ -44,9 +44,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
       caption: post ? post?.caption : '',
       file: [],
       location: location ? post?.location : '',
-      tags: post ? post.tags.join(',') : '',
-    },
-  });
+      tags: post ? post.tags.join(',') : ''
+    }
+  })
 
   async function onSubmit(values: z.infer<typeof PostValidation>) {
     if (post && action === 'Update') {
@@ -54,32 +54,32 @@ const PostForm = ({ post, action }: PostFormProps) => {
         ...values,
         postId: post.$id,
         imageId: post?.imageId,
-        imageUrl: post?.imageUrl,
-      });
+        imageUrl: post?.imageUrl
+      })
 
       if (!updatedPost) {
-        toast({ title: 'Please try again' });
+        toast({ title: 'Please try again' })
       }
-      return navigate(`/posts/${post.$id}`);
+      return navigate(`/posts/${post.$id}`)
     }
     const newPost = await createPost({
       ...values,
-      userId: user.id,
-    });
+      userId: user.id
+    })
 
     if (!newPost) {
       toast({
-        title: 'Please try again',
-      });
+        title: 'Please try again'
+      })
     }
-    navigate(-1);
+    navigate(-1)
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='flex flex-col gap-9 w-full'
+        className='flex w-full flex-col gap-9'
       >
         <FormField
           control={form.control}
@@ -145,7 +145,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
             </FormItem>
           )}
         />
-        <div className='flex gap-4 items-center justify-end'>
+        <div className='flex items-center justify-end gap-4'>
           <Button
             type='button'
             className='shad-button_dark_4'
@@ -164,7 +164,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
         </div>
       </form>
     </Form>
-  );
-};
+  )
+}
 
-export default PostForm;
+export default PostForm

@@ -1,18 +1,18 @@
-import Bottombar from '@/components/shared/Bottombar';
-import LeftSidebar from '@/components/shared/LeftSidebar';
-import RightSidebar from '@/components/shared/RightSidebar';
-import Topbar from '@/components/shared/Topbar';
-import { Outlet } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import Bottombar from '@/components/shared/Bottombar'
+import LeftSidebar from '@/components/shared/LeftSidebar'
+import RightSidebar from '@/components/shared/RightSidebar'
+import Topbar from '@/components/shared/Topbar'
+import { Outlet } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const RootLayout = () => {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <div className='w-full md:flex'>
       <Topbar />
       <LeftSidebar />
-      <section className='flex flex-1 h-full'>
+      <section className='flex h-full flex-1'>
         <Outlet />
       </section>
       {location.pathname === '/' && (
@@ -22,7 +22,7 @@ const RootLayout = () => {
       )}
       <Bottombar />
     </div>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

@@ -1,21 +1,21 @@
-import { useUserContext } from '@/context/AuthContext';
-import { formatDateString } from '@/lib/utils';
-import { Models } from 'appwrite';
-import { Link } from 'react-router-dom';
-import PostStats from './PostStats';
+import { useUserContext } from '@/context/AuthContext'
+import { formatDateString } from '@/lib/utils'
+import { Models } from 'appwrite'
+import { Link } from 'react-router-dom'
+import PostStats from './PostStats'
 
 type PostCardProps = {
-  post?: Models.Document;
-};
+  post?: Models.Document
+}
 
 const PostCard = ({ post }: PostCardProps) => {
-  const { user } = useUserContext();
+  const { user } = useUserContext()
 
-  if (!post?.creator) return;
+  if (!post?.creator) return
 
   return (
-    <div className='post-card '>
-      <div className='flex-between '>
+    <div className='post-card'>
+      <div className='flex-between'>
         <div className='flex items-center gap-3'>
           <Link to={`/profile/${post.creator.$id}`}>
             <img
@@ -24,18 +24,18 @@ const PostCard = ({ post }: PostCardProps) => {
                 '/assets/icons/profile-placeholder.svg'
               }
               alt='creator'
-              className='rounded-full w-11 lg:h-11'
+              className='w-11 rounded-full lg:h-11'
             />
           </Link>
           <div className='flex flex-col'>
             <p className='base-medium lg:body-bold text-light-1'>
               {post?.creator.name}
             </p>
-            <div className='flex-left text-light-3 flex flex-col sm:flex-row pr-2 self-left'>
+            <div className='flex-left self-left flex flex-col pr-2 text-light-3 sm:flex-row'>
               <p className='subtle-semibold lg:small-regular'>
                 {formatDateString(post?.$createdAt || '')},
               </p>
-              <p className='subtle-semibold lg:small-regular sm:ml-1 '>
+              <p className='subtle-semibold lg:small-regular sm:ml-1'>
                 {post?.location}
               </p>
             </div>
@@ -51,7 +51,7 @@ const PostCard = ({ post }: PostCardProps) => {
       <Link to={`/posts/${post?.$id} `}>
         <div className='small-medium lg:base-medium py-5'>
           <p>{post?.caption}</p>
-          <ul className='flex gap-1 mt-2'>
+          <ul className='mt-2 flex gap-1'>
             {post.tags.map((tag: string) => (
               <li key={tag} className='text-light-3'>
                 #{tag}
@@ -69,7 +69,7 @@ const PostCard = ({ post }: PostCardProps) => {
 
       <PostStats post={post} userId={user.id} />
     </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard

@@ -1,25 +1,25 @@
-import { useSignOutAccount } from '@/lib/react-query/queriesAndMutations';
-import { useEffect } from 'react';
-import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { useUserContext } from '@/context/AuthContext';
-import { sidebarLinks } from '@/constants';
-import { INavLink } from '@/types';
-import { Button } from '../ui/button';
+import { useSignOutAccount } from '@/lib/react-query/queriesAndMutations'
+import { useEffect } from 'react'
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
+import { useUserContext } from '@/context/AuthContext'
+import { sidebarLinks } from '@/constants'
+import { INavLink } from '@/types'
+import { Button } from '../ui/button'
 
 const LeftSidebar = () => {
-  const { mutate: signOut, isSuccess } = useSignOutAccount();
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const { user } = useUserContext();
+  const { mutate: signOut, isSuccess } = useSignOutAccount()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const { user } = useUserContext()
 
   useEffect(() => {
-    if (isSuccess) navigate(0);
-  }, [isSuccess, navigate]);
+    if (isSuccess) navigate(0)
+  }, [isSuccess, navigate])
 
   return (
     <nav className='leftsidebar'>
-      <div className='flex flex-col gap-11 '>
-        <Link to='/' className='flex gap-3 items-center'>
+      <div className='flex flex-col gap-11'>
+        <Link to='/' className='flex items-center gap-3'>
           <img
             src='/assets/images/logo.svg'
             alt='logo'
@@ -27,7 +27,7 @@ const LeftSidebar = () => {
             height={136}
           />
         </Link>
-        <Link to={`/profile/${user.id}`} className='flex gap-3 items-center'>
+        <Link to={`/profile/${user.id}`} className='flex items-center gap-3'>
           <img
             src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
             alt='profile'
@@ -40,7 +40,7 @@ const LeftSidebar = () => {
         </Link>
         <ul className='flex flex-col gap-6'>
           {sidebarLinks.map((link: INavLink) => {
-            const isActive = pathname === link.route;
+            const isActive = pathname === link.route
 
             return (
               <li
@@ -51,7 +51,7 @@ const LeftSidebar = () => {
               >
                 <NavLink
                   to={link.route}
-                  className='flex gap-4 items-center p-4'
+                  className='flex items-center gap-4 p-4'
                 >
                   <img
                     src={link.imgURL}
@@ -63,7 +63,7 @@ const LeftSidebar = () => {
                   {link.label}
                 </NavLink>
               </li>
-            );
+            )
           })}
         </ul>
       </div>
@@ -76,7 +76,7 @@ const LeftSidebar = () => {
         <p className='small-medium lg:base-medium'>Logout</p>
       </Button>
     </nav>
-  );
-};
+  )
+}
 
-export default LeftSidebar;
+export default LeftSidebar

@@ -1,74 +1,74 @@
-import { Models } from 'appwrite';
-import { useState, useEffect } from 'react';
-import { checkIsLiked } from '@/lib/utils';
+import { Models } from 'appwrite'
+import { useState, useEffect } from 'react'
+import { checkIsLiked } from '@/lib/utils'
 import {
   useLikePost,
   useSavePost,
   useDeleteSavedPost,
-  useGetCurrentUser,
-} from '@/lib/react-query/queriesAndMutations';
-import Loader from './Loader';
+  useGetCurrentUser
+} from '@/lib/react-query/queriesAndMutations'
+import Loader from './Loader'
 
 type PostStatsProps = {
-  post?: Models.Document;
-  userId: string;
-};
+  post?: Models.Document
+  userId: string
+}
 
 const PostStats = ({ post, userId }: PostStatsProps) => {
-  const likesList = post?.likes.map((user: Models.Document) => user.$id);
+  const likesList = post?.likes.map((user: Models.Document) => user.$id)
 
-  const [likes, setLikes] = useState<string[]>(likesList);
-  const [isSaved, setIsSaved] = useState(false);
+  const [likes, setLikes] = useState<string[]>(likesList)
+  const [isSaved, setIsSaved] = useState(false)
 
-  const { mutate: likePost } = useLikePost();
-  const { mutate: savePost, isPending: isSavingPost } = useSavePost();
+  const { mutate: likePost } = useLikePost()
+  const { mutate: savePost, isPending: isSavingPost } = useSavePost()
   const { mutate: deleteSavePost, isPending: isDeletingSaved } =
-    useDeleteSavedPost();
+    useDeleteSavedPost()
 
-  const { data: currentUser } = useGetCurrentUser();
+  const { data: currentUser } = useGetCurrentUser()
 
   const savedPostRecord = currentUser?.save.find(
     (record: Models.Document) => record.post.$id === post?.$id
-  );
+  )
 
   useEffect(() => {
-    setIsSaved(!!savedPostRecord);
-  }, [currentUser, savedPostRecord]);
+    setIsSaved(!!savedPostRecord)
+  }, [currentUser, savedPostRecord])
 
   const handleLikePost = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
-    let likesArray = [...likes];
+    let likesArray = [...likes]
 
     if (likesArray.includes(userId)) {
-      likesArray = likesArray.filter(Id => Id !== userId);
+      likesArray = likesArray.filter(Id => Id !== userId)
     } else {
-      likesArray.push(userId);
+      likesArray.push(userId)
     }
 
-    setLikes(likesArray);
-    likePost({ postId: post?.$id, likesArray });
-  };
+    setLikes(likesArray)
+    likePost({ postId: post?.$id, likesArray })
+  }
 
   const handleSavePost = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>
   ) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
     if (savedPostRecord) {
-      setIsSaved(false);
-      return deleteSavePost(savedPostRecord.$id);
+      setIsSaved(false)
+      return deleteSavePost(savedPostRecord.$id)
     }
 
-    savePost({ userId: userId, postId: post?.$id });
-    setIsSaved(true);
-  };
+    savePost({ userId: userId, postId: post?.$id })
+    setIsSaved(true)
+  }
 
   return (
-    <div className='flex items-center z-20 flex-between w-full'>
-      <div className='flex gap-2 mr-5'>
+    <div className='flex-between z-20 flex w-full items-center'>
+      <div className='mr-5 flex gap-2'>
         <img
           src={
             checkIsLiked(likes, userId)
@@ -84,7 +84,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
         <p className='small-medium lg:base-medium'>{likes.length}</p>
       </div>
 
-      <div className='flex gap-2 '>
+      <div className='flex gap-2'>
         {isSavingPost || isDeletingSaved ? (
           <Loader />
         ) : (
@@ -99,7 +99,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostStats;
+export default PostStats

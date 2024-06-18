@@ -1,22 +1,22 @@
-import { Button } from '../ui/button';
-import { useSignOutAccount } from '@/lib/react-query/queriesAndMutations';
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useUserContext } from '@/context/AuthContext';
+import { Button } from '../ui/button'
+import { useSignOutAccount } from '@/lib/react-query/queriesAndMutations'
+import { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useUserContext } from '@/context/AuthContext'
 
 const Topbar = () => {
-  const { mutate: signOut, isSuccess } = useSignOutAccount();
-  const navigate = useNavigate();
-  const { user } = useUserContext();
+  const { mutate: signOut, isSuccess } = useSignOutAccount()
+  const navigate = useNavigate()
+  const { user } = useUserContext()
 
   useEffect(() => {
-    if (isSuccess) navigate('/sign-in');
-  }, [isSuccess, navigate]);
+    if (isSuccess) navigate('/sign-in')
+  }, [isSuccess, navigate])
 
   return (
     <section className='topbar'>
-      <div className='flex-between py-4 px-5'>
-        <Link to='/' className='flex gap-3 items-center'>
+      <div className='flex-between px-5 py-4'>
+        <Link to='/' className='flex items-center gap-3'>
           <img
             src='/assets/images/logo.svg'
             alt='logo'
@@ -43,10 +43,10 @@ const Topbar = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Topbar;
+export default Topbar
 
 // https://www.youtube.com/watch?v=_W3R2VwRyF4&t=1463s
 

@@ -1,7 +1,7 @@
-import * as z from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate, useParams } from 'react-router-dom';
+import * as z from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import {
   Form,
@@ -9,28 +9,28 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { useToast } from '@/components/ui/use-toast';
+  FormMessage
+} from '@/components/ui/form'
+import { useToast } from '@/components/ui/use-toast'
 
-import { ProfileValidation } from '@/lib/validation';
-import { useUserContext } from '@/context/AuthContext';
-import Loader from '@/components/shared/Loader';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { ProfileValidation } from '@/lib/validation'
+import { useUserContext } from '@/context/AuthContext'
+import Loader from '@/components/shared/Loader'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
 import {
   useGetUserById,
-  useUpdateUser,
-} from '@/lib/react-query/queriesAndMutations';
-import ProfileUploader from '@/components/shared/ProfileUploader';
-import TopPosts from '@/components/shared/TopPosts';
+  useUpdateUser
+} from '@/lib/react-query/queriesAndMutations'
+import ProfileUploader from '@/components/shared/ProfileUploader'
+import TopPosts from '@/components/shared/TopPosts'
 
 const UpdateProfile = () => {
-  const { toast } = useToast();
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const { user, setUser } = useUserContext();
+  const { toast } = useToast()
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const { user, setUser } = useUserContext()
   const form = useForm<z.infer<typeof ProfileValidation>>({
     resolver: zodResolver(ProfileValidation),
     defaultValues: {
@@ -38,22 +38,22 @@ const UpdateProfile = () => {
       name: user.name,
       username: user.username,
       email: user.email,
-      bio: user.bio || '',
-    },
-  });
-  console.log(id);
+      bio: user.bio || ''
+    }
+  })
+  console.log(id)
 
   // Queries
-  const { data: currentUser } = useGetUserById(id || '');
+  const { data: currentUser } = useGetUserById(id || '')
   const { mutateAsync: updateUser, isPending: isLoadingUpdate } =
-    useUpdateUser();
+    useUpdateUser()
 
   if (!currentUser)
     return (
-      <div className='flex-center w-full h-full'>
+      <div className='flex-center h-full w-full'>
         <Loader />
       </div>
-    );
+    )
 
   // Handler
   const handleUpdate = async (value: z.infer<typeof ProfileValidation>) => {
@@ -63,28 +63,28 @@ const UpdateProfile = () => {
       bio: value.bio,
       file: value.file,
       imageUrl: currentUser.imageUrl,
-      imageId: currentUser.imageId,
-    });
+      imageId: currentUser.imageId
+    })
 
     if (!updatedUser) {
       toast({
-        title: `Update user failed. Please try again.`,
-      });
+        title: `Update user failed. Please try again.`
+      })
     }
 
     setUser({
       ...user,
       name: updatedUser?.name,
       bio: updatedUser?.bio,
-      imageUrl: updatedUser?.imageUrl,
-    });
-    return navigate(`/profile/${id}`);
-  };
+      imageUrl: updatedUser?.imageUrl
+    })
+    return navigate(`/profile/${id}`)
+  }
 
   return (
     <div className='flex flex-1'>
       <div className='common-container'>
-        <div className='flex-start gap-3 justify-start w-full'>
+        <div className='flex-start w-full justify-start gap-3'>
           <img
             src='/assets/icons/edit.svg'
             width={36}
@@ -92,13 +92,13 @@ const UpdateProfile = () => {
             alt='edit'
             className='invert-white'
           />
-          <h2 className='h3-bold md:h2-bold text-left w-full'>Edit Profile</h2>
+          <h2 className='h3-bold md:h2-bold w-full text-left'>Edit Profile</h2>
         </div>
 
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleUpdate)}
-            className='flex flex-col gap-7 w-full mt-4'
+            className='mt-4 flex w-full flex-col gap-7'
           >
             <FormField
               control={form.control}
@@ -185,7 +185,7 @@ const UpdateProfile = () => {
               )}
             />
 
-            <div className='flex gap-4 items-center justify-end'>
+            <div className='flex items-center justify-end gap-4'>
               <Button
                 type='button'
                 className='shad-button_dark_4'
@@ -209,7 +209,7 @@ const UpdateProfile = () => {
         <TopPosts />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UpdateProfile;
+export default UpdateProfile
