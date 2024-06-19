@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom'
 const CreatePost = () => {
   const { user } = useUserContext()
   const { data: currentUser } = useGetUserById(user.id || '')
-  console.log(currentUser)
-  console.log(user)
 
   return (
     <div className='flex flex-1'>
