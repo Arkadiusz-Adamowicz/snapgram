@@ -13,7 +13,6 @@ import { Link, useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import GridPostList from '@/components/shared/GridPostList'
 import { Models } from 'appwrite'
-import TopPostList from '@/components/shared/TopPostList'
 
 const PostDetails = () => {
   const { data: currentUser } = useGetCurrentUser()
@@ -152,28 +151,6 @@ const PostDetails = () => {
               </ul>
             )}
           </div>
-        </div>
-      </div>
-      <div className='rightsidebar'>
-        <div className='flex flex-col gap-8'>
-          <Link
-            to={`/profile/${user.id}`}
-            className='flex flex-col items-center gap-3'
-          >
-            <img
-              src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
-              alt='profile'
-              className='h-[130px] w-[130px] rounded-full'
-            />
-            <div className='flex flex-col gap-1'>
-              <p className='text-[27px] font-black'>{user.name}</p>
-              <p className='text-[18px] text-light-3'>@{user.username}</p>
-            </div>
-          </Link>
-          <h3 className='h3-bold items-center text-xl'>Top Posts</h3>
-        </div>
-        <div className='mt-5 w-[400px]'>
-          <TopPostList posts={currentUser?.posts} />
         </div>
       </div>
     </>
