@@ -101,17 +101,15 @@ const Explore = () => {
       </div>
 
       <div className='flex w-full flex-wrap gap-9'>
-        {shouldShowSearchResults ? (
+        {shouldShowSearchResults && shouldShowPosts ? (
           <SearchResults
             isSearchFetching={isSearchFetching}
             searchedPosts={searchedPosts}
           />
-        ) : shouldShowPosts ? (
+        ) : (
           posts.pages.map((item, index) => (
             <GridPostList key={`page-${index}`} posts={item?.documents} />
           ))
-        ) : (
-          <p className='mt-10 w-full text-center text-light-4'>End of posts</p>
         )}
       </div>
 

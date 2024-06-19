@@ -1,18 +1,11 @@
 import Loader from '@/components/shared/Loader'
 import UserCard from '@/components/shared/UserCard'
 import { useToast } from '@/components/ui/use-toast'
-import { useUserContext } from '@/context/AuthContext'
-import {
-  useGetUserById,
-  useGetUsers
-} from '@/lib/react-query/queriesAndMutations'
-import TopPostList from './TopPostList'
+import { useGetUsers } from '@/lib/react-query/queriesAndMutations'
 
 const RightSidebar = () => {
   const { toast } = useToast()
   const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers()
-  const { user } = useUserContext()
-  const { data: currentUser } = useGetUserById(user.id || '')
 
   if (isErrorCreators) {
     toast({ title: 'Something went wrong' })
@@ -32,14 +25,6 @@ const RightSidebar = () => {
             ))}
           </ul>
         )}
-      </div>
-      <div className='flex flex-col'>
-        <h3 className='h3-bold mb-8 mt-5 items-center text-xl'>Top Posts</h3>
-        <div className=''>
-          <div className='w-[400px]'>
-            <TopPostList posts={currentUser?.posts} />
-          </div>
-        </div>
       </div>
     </div>
   )
