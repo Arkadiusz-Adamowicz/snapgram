@@ -26,7 +26,7 @@ const TopPosts = () => {
           <img
             src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
             alt='profile'
-            className='h-[130px] w-[130px] rounded-full'
+            className='h-[90px] w-[90px] rounded-full'
           />
           <div className='flex flex-col gap-1'>
             <p className='text-[27px] font-black'>{user.name}</p>
@@ -35,7 +35,7 @@ const TopPosts = () => {
         </Link>
         <h3 className='h3-bold items-center text-xl'>Top Posts</h3>
       </div>
-      <div className='mt-5 h-screen w-[400px]'>
+      <div className='mt-5 h-screen w-[300px]'>
         <TopPostList posts={currentUser.posts} />
       </div>
     </div>

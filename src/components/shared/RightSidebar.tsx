@@ -17,7 +17,7 @@ const RightSidebar = () => {
         {isLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className='grid grid-cols-2 gap-5'>
+          <ul className='grid grid-cols 2xl:grid-cols-2 gap-5'>
             {creators?.documents.map(creator => (
               <li key={creator?.$id}>
                 <UserCard user={creator} />
