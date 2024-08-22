@@ -64,7 +64,7 @@ const Profile = () => {
                 className='h-28 w-28 rounded-full object-cover lg:h-36 lg:w-36'
               />
               <div className='flex flex-1 flex-col justify-between md:mt-2'>
-                <div className='fle flex w-full flex-col items-center justify-between gap-5 xl:flex-row'>
+                <div className='flex w-full flex-col justify-between gap-5 xl:flex-row'>
                   <div>
                     <h1 className='h3-bold md:h1-semibold w-full text-center xl:text-left'>
                       {currentUser.name}
