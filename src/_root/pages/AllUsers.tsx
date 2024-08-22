@@ -1,11 +1,9 @@
-
 import Loader from '@/components/shared/Loader'
 import UserCard from '@/components/shared/UserCard'
 import { useToast } from '@/components/ui/use-toast'
 import { useGetUsers } from '@/lib/react-query/queriesAndMutations'
 
 const AllUsers = () => {
- 
   const { toast } = useToast()
   const { data: creators, isLoading, isError: isErrorCreators } = useGetUsers()
 
@@ -26,7 +24,7 @@ const AllUsers = () => {
         {isLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className='flex flex-wrap gap-5'>
+          <ul className='flex w-full flex-wrap gap-5'>
             {creators?.documents.map(creator => (
               <li key={creator?.$id} className='w-full min-w-[200px] flex-1'>
                 <UserCard user={creator} />

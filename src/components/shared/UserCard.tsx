@@ -12,7 +12,7 @@ const UserCard = ({ user }: UserCardProps) => {
       <img
         src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
         alt='creator'
-        className='h-14 w-14 rounded-full object-cover'
+        className='h-16 w-16 rounded-full object-cover'
       />
 
       <div className='flex-center flex-col gap-1'>
