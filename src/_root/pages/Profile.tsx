@@ -73,7 +73,7 @@ const Profile = () => {
                   <div className={`${user.id !== currentUser.$id && 'hidden'}`}>
                     <Link
                       to={`/update-profile/${currentUser.$id}`}
-                      className={`flex-center h-12 gap-2 rounded-lg bg-dark-4 px-5 text-light-1 ${
+                      className={`flex-center h-12 gap-2 mt-1 rounded-lg bg-dark-4 px-5 text-light-1 ${
                         user.id !== currentUser.$id && 'hidden'
                       }`}
                     >
@@ -92,7 +92,7 @@ const Profile = () => {
                   <div className={`${user.id === id && 'hidden'}`}>
                     <Button
                       type='button'
-                      className='shad-button_primary max-w-screen-sm px-8'
+                      className='shad-button_primary max-w-screen-sm px-8 mt-1'
                     >
                       Follow
                     </Button>
