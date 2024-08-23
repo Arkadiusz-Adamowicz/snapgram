@@ -12,7 +12,6 @@ import Loader from '@/components/shared/Loader'
 import { Button } from '@/components/ui/button'
 import GridPostList from '@/components/shared/GridPostList'
 import { useGetUserById } from '@/lib/react-query/queriesAndMutations'
-
 interface StabBlockProps {
   value: string | number
   label: string
@@ -62,7 +61,7 @@ const Profile = () => {
                 className='h-28 w-28 rounded-full object-cover lg:h-36 lg:w-36'
               />
               <div className='flex flex-1 flex-col justify-between md:mt-2 w-full'>
-                <div className='flex w-full flex-col gap-5 xl:flex-row'>
+                <div className='flex w-full justify-between flex-col gap-5 xl:flex-row'>
                   <div>
                     <h1 className='h3-bold md:h1-semibold w-full text-center xl:text-left'>
                       {currentUser.name}
@@ -158,7 +157,6 @@ const Profile = () => {
             <Route path='/liked-posts' element={<LikedPosts />} />
           )}
         </Routes>
-        
       </div>
       
     </>
