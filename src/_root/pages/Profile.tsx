@@ -2,7 +2,6 @@ import {
   Route,
   Routes,
   Link,
-  // Outlet,
   useParams,
   useLocation
 } from 'react-router-dom'
@@ -13,7 +12,6 @@ import Loader from '@/components/shared/Loader'
 import { Button } from '@/components/ui/button'
 import GridPostList from '@/components/shared/GridPostList'
 import { useGetUserById } from '@/lib/react-query/queriesAndMutations'
-// import TopPostList from '@/components/shared/TopPostList'
 
 interface StabBlockProps {
   value: string | number
@@ -42,7 +40,6 @@ const Profile = () => {
     )
 
   return (
-    <div className='flex flex-1'>
       <div className='profile-container'>
         <div className='profile-inner_container'>
           <div className='w-full flex-col justify-start gap-3'>
@@ -54,7 +51,7 @@ const Profile = () => {
               />
               Profile
             </h2>
-            <div className='flex flex-1 flex-col gap-7 max-xl:items-center xl:flex-row'>
+            <div className='flex flex-1 flex-col gap-7 max-xl:items-center xl:flex-row '>
               <img
                 src={
                   currentUser.imageUrl ||
@@ -161,7 +158,6 @@ const Profile = () => {
           )}
         </Routes>
       </div>
-    </div>
   )
 }
 
