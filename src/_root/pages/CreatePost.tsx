@@ -22,7 +22,6 @@ const CreatePost = () => {
         </div>
         <PostForm action='Create' />
       </div>
-
       <div className='rightsidebar'>
         <div className='flex flex-col gap-8'>
           <h3 className='h3-bold items-center text-xl'>Top Posts</h3>
