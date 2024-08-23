@@ -1,10 +1,4 @@
-import {
-  Route,
-  Routes,
-  Link,
-  useParams,
-  useLocation
-} from 'react-router-dom'
+import { Route, Routes, Link, useParams, useLocation } from 'react-router-dom'
 
 import { LikedPosts } from '@/_root/pages'
 import { useUserContext } from '@/context/AuthContext'
@@ -12,6 +6,7 @@ import Loader from '@/components/shared/Loader'
 import { Button } from '@/components/ui/button'
 import GridPostList from '@/components/shared/GridPostList'
 import { useGetUserById } from '@/lib/react-query/queriesAndMutations'
+import TopPosts from '@/components/shared/TopPosts'
 interface StabBlockProps {
   value: string | number
   label: string
@@ -42,7 +37,7 @@ const Profile = () => {
     <>
       <div className='profile-container'>
         <div className='profile-inner_container'>
-          <div className='w-full flex flex-col justify-start gap-3'>
+          <div className='flex w-full flex-col justify-start gap-3'>
             <h2 className='h3-bold md:h2-bold mb-5 flex w-full items-center'>
               <img
                 src='/assets/icons/follow.svg'
@@ -51,7 +46,7 @@ const Profile = () => {
               />
               Profile
             </h2>
-            <div className='flex flex-1 flex-col gap-7 max-xl:items-center xl:flex-row '>
+            <div className='flex flex-1 flex-col gap-7 max-xl:items-center xl:flex-row'>
               <img
                 src={
                   currentUser.imageUrl ||
@@ -60,8 +55,8 @@ const Profile = () => {
                 alt='profile'
                 className='h-28 w-28 rounded-full object-cover lg:h-36 lg:w-36'
               />
-              <div className='flex flex-1 flex-col justify-between md:mt-2 w-full'>
-                <div className='flex w-full flex-col gap-5 xl:flex-row'>
+              <div className='flex w-full flex-1 flex-col justify-between md:mt-2'>
+                <div className='flex w-full flex-col justify-between gap-5 xl:flex-row'>
                   <div>
                     <h1 className='h3-bold md:h1-semibold w-full text-center xl:text-left'>
                       {currentUser.name}
@@ -73,7 +68,7 @@ const Profile = () => {
                   <div className={`${user.id !== currentUser.$id && 'hidden'}`}>
                     <Link
                       to={`/update-profile/${currentUser.$id}`}
-                      className={`flex-center justify-center mx-auto h-12 gap-2 mt-1 rounded-lg bg-dark-4 px-5 text-light-1  ${
+                      className={`flex-center mx-auto mt-1 h-12 justify-center gap-2 rounded-lg bg-dark-4 px-5 text-light-1 ${
                         user.id !== currentUser.$id && 'hidden'
                       }`}
                     >
@@ -92,7 +87,7 @@ const Profile = () => {
                   <div className={`${user.id === id && 'hidden'}`}>
                     <Button
                       type='button'
-                      className='flex-center justify-center items-center mx-auto shad-button_primary max-w-screen-sm px-8 mt-1'
+                      className='flex-center shad-button_primary mx-auto mt-1 max-w-screen-sm items-center justify-center px-8'
                     >
                       Follow
                     </Button>
@@ -158,7 +153,7 @@ const Profile = () => {
           )}
         </Routes>
       </div>
-      
+      <TopPosts />
     </>
   )
 }
