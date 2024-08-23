@@ -6,7 +6,6 @@ import Loader from '@/components/shared/Loader'
 import { Button } from '@/components/ui/button'
 import GridPostList from '@/components/shared/GridPostList'
 import { useGetUserById } from '@/lib/react-query/queriesAndMutations'
-import TopPosts from '@/components/shared/TopPosts'
 interface StabBlockProps {
   value: string | number
   label: string
@@ -153,7 +152,6 @@ const Profile = () => {
           )}
         </Routes>
       </div>
-      {/* <TopPosts /> */}
     </>
   )
 }
