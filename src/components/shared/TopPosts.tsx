@@ -19,7 +19,7 @@ const TopPosts = () => {
       <div className='flex flex-col gap-8'>
         <h3 className='h3-bold items-center text-xl'>Top Posts</h3>
       </div>
-      <div className='mt-5 w-[300px] 2xl:w-[400px]'>
+      <div className='mt-5 w-[300px]'>
         <TopPostList posts={currentUser.posts} />
       </div>
     </div>
