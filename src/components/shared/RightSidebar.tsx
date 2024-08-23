@@ -18,9 +18,11 @@ const RightSidebar = () => {
           <Loader />
         ) : (
           <ul className='grid grid-cols 2xl:grid-cols-2 gap-5'>
-            {creators?.documents.map(creator => (
+            {creators?.documents.sort((a, b) => {
+      return a.username < b.username ? -1 : 1
+    }).map(creator => (
               <li key={creator?.$id}>
-                <UserCard user={creator} />
+                <UserCard user={creator}/>
               </li>
             ))}
           </ul>

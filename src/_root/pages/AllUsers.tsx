@@ -25,7 +25,9 @@ const AllUsers = () => {
           <Loader />
         ) : (
           <ul className='flex w-full flex-wrap gap-5'>
-            {creators?.documents.map(creator => (
+            {creators?.documents.sort((a,b)=> {
+              return a.username < b.username ? -1 : 1
+            }).map(creator => (
               <li key={creator?.$id} className='w-full min-w-[200px] flex-1'>
                 <UserCard user={creator} />
               </li>
