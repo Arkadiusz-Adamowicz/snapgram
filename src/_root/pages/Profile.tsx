@@ -61,7 +61,7 @@ const Profile = () => {
                 className='h-28 w-28 rounded-full object-cover lg:h-36 lg:w-36'
               />
               <div className='flex flex-1 flex-col justify-between md:mt-2 w-full'>
-                <div className='flex w-full justify-between flex-col gap-5 xl:flex-row'>
+                <div className='flex w-full flex-col gap-5 xl:flex-row'>
                   <div>
                     <h1 className='h3-bold md:h1-semibold w-full text-center xl:text-left'>
                       {currentUser.name}
@@ -73,7 +73,7 @@ const Profile = () => {
                   <div className={`${user.id !== currentUser.$id && 'hidden'}`}>
                     <Link
                       to={`/update-profile/${currentUser.$id}`}
-                      className={`flex-center h-12 gap-2 mt-1 rounded-lg bg-dark-4 px-5 text-light-1 ${
+                      className={`flex-center justify-center mx-auto h-12 gap-2 mt-1 rounded-lg bg-dark-4 px-5 text-light-1  ${
                         user.id !== currentUser.$id && 'hidden'
                       }`}
                     >
@@ -92,7 +92,7 @@ const Profile = () => {
                   <div className={`${user.id === id && 'hidden'}`}>
                     <Button
                       type='button'
-                      className='shad-button_primary max-w-screen-sm px-8 mt-1'
+                      className='flex-center justify-center items-center mx-auto shad-button_primary max-w-screen-sm px-8 mt-1'
                     >
                       Follow
                     </Button>
