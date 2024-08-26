@@ -99,7 +99,7 @@ const Profile = () => {
                   <StatBlock value={20} label='Following' />
                 </div>
 
-                <p className='small-medium md:base-medium mt-7 max-w-screen-lg text-center xl:text-left'>
+                <p className='small-medium md:base-medium mt-7 max-w-screen-lg text-balance xl:text-left'>
                   {currentUser.bio}
                 </p>
               </div>
