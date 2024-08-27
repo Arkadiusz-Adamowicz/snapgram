@@ -87,10 +87,8 @@ const UpdateProfile = () => {
         <div className='flex-start w-full justify-start gap-3'>
           <img
             src='/assets/icons/edit.svg'
-            width={36}
-            height={36}
             alt='edit'
-            className='invert-white'
+            className='invert-white h-6 w-6 md:h-8 md:w-8'
           />
           <h2 className='h3-bold md:h2-bold w-full text-left'>Edit Profile</h2>
         </div>
