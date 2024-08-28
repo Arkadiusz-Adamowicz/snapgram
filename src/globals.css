@@ -161,7 +161,7 @@
   }
 
   .post_details-img {
-    @apply h-80 rounded-[40px] bg-dark-1 object-cover p-5 lg:h-[600px] xl:w-[60%];
+    @apply h-80 rounded-[40px] bg-dark-1 object-cover p-5 lg:h-[500px] 2xl:h-[600px] xl:w-[60%];
   }
 
   .post_details-info {
@@ -240,7 +240,7 @@
   }
 
   .post-card_img {
-    @apply mb-5 h-64 w-full rounded-[24px] object-cover xs:h-[450px] lg:h-[550px];
+    @apply mb-5 h-64 w-full rounded-[24px] object-cover xs:h-[450px] xl:h-[550px];
   }
 
   /* Topbar */
