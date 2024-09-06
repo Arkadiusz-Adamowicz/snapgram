@@ -161,7 +161,7 @@
   }
 
   .post_details-img {
-    @apply h-80 rounded-[40px] bg-dark-1 object-cover p-5 lg:h-[500px] 2xl:h-[600px] xl:w-[60%];
+    @apply h-80 rounded-[40px] bg-dark-1 object-cover p-5 lg:h-[500px] xl:w-[60%] 2xl:h-[600px];
   }
 
   .post_details-info {

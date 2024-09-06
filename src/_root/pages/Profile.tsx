@@ -55,7 +55,7 @@ const Profile = () => {
                 className='h-28 w-28 rounded-full object-cover lg:h-36 lg:w-36'
               />
               <div className='flex w-full flex-1 flex-col justify-between md:mt-2'>
-                <div className='flex max-w-screen-md 2xl:max-w-screen-lg flex-col justify-between gap-5 xl:flex-row'>
+                <div className='flex max-w-screen-xl flex-col justify-between gap-5 xl:flex-row 2xl:max-w-screen-lg'>
                   <div>
                     <h1 className='h3-bold md:h1-semibold w-full text-center xl:text-left'>
                       {currentUser.name}
@@ -99,7 +99,7 @@ const Profile = () => {
                   <StatBlock value={20} label='Following' />
                 </div>
 
-                <p className='small-medium md:base-medium mt-7 max-w-screen-md 2xl:max-w-screen-lg text-center xl:text-left'>
+                <p className='small-medium md:base-medium mt-7 max-w-screen-xl text-center xl:text-left 2xl:max-w-screen-lg'>
                   {currentUser.bio}
                 </p>
               </div>
